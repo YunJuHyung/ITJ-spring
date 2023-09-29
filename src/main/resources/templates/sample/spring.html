@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th=http://www.thymeleaf.org"">
 <head>
     <meta charset="UTF-8">
     <title>spring</title>
 </head>
-<body>
+<header th:replace="/header.html :: header"></header>
 
-</body>
+<body>
+<h1>Spring Example</h1>
+
+<!-- Form to submit parameters -->
+<form th:action="@{/spring}" method="get">
+    <label for="name">Name: </label>
+    <input type="text" id="name" name="name" /><br />
+
+    <label for="age">Age: </label>
+    <input type="text" id="age" name="age" /><br />
+
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Display received parameters -->
+<div th:if="${param.name != null}">
+    <p>Received Name: <span th:text="${param.name}"></span></p>
+</div>
+<div th:if="${param.age != null}">
+    <p>Received Age: <span th:text="${param.age}"></span></p>
+</div>
+
+<footer th:replace="/footer.html :: footer"></footer>
 </html>

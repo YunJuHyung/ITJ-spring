@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="UTF-8">
+<html lang="UTF-8" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -31,8 +31,12 @@
         go SPRING2
         </a>
     </li>
-    <li><a th:href="@{community()}">
-        go community
+    <li><a th:href="@{list(name='momo',age='24')}">
+        go list
+        </a>
+    </li>
+    <li><a th:href="@{community(name='momo',age='24')}">
+        go 커뮤니티
         </a>
     </li>
 </ul>

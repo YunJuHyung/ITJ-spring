@@ -10,6 +10,7 @@ import org.iclass.mvc.dto.Community;
 public interface CommunityMapper {
 	//글목록 페이징
 	List<Community> pagelist(Map<String,Integer> map);
+	//글 조회수
 	int count();
 	//글 수정,글 읽기
 	Community selectByIdx(long idx);
@@ -21,5 +22,7 @@ public interface CommunityMapper {
 	int update(Community vo);
 	//글 삭제
 	int delete(long idx);
+
+	int read(long idx);
 	
 }
