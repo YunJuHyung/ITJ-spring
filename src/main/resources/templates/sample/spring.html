@@ -1,32 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th=http://www.thymeleaf.org"">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{layout/basic.html}">
+<!-- 이 페이지는 layout/basic.html 파일로 장식(decorate)됩니다. 레이아웃 프레임 -->
 <head>
     <meta charset="UTF-8">
-    <title>spring</title>
+    <title>Spring</title>
 </head>
-<header th:replace="/header.html :: header"></header>
-
 <body>
-<h1>Spring Example</h1>
+<!-- basic.html 에서 정의된 layout:fragment="contetnt"에 들어갈 내용입니다. -->
 
-<!-- Form to submit parameters -->
-<form th:action="@{/spring}" method="get">
-    <label for="name">Name: </label>
-    <input type="text" id="name" name="name" /><br />
-
-    <label for="age">Age: </label>
-    <input type="text" id="age" name="age" /><br />
-
-    <button type="submit">Submit</button>
-</form>
-
-<!-- Display received parameters -->
-<div th:if="${param.name != null}">
-    <p>Received Name: <span th:text="${param.name}"></span></p>
+<div layout:fragment="content">
+<hr>
+    title : [[${community.title}]]
+    writer : [[${community.writer}]]
+    name : [[${name}]]
+    age : [[${age}]]
 </div>
-<div th:if="${param.age != null}">
-    <p>Received Age: <span th:text="${param.age}"></span></p>
-</div>
-
-<footer th:replace="/footer.html :: footer"></footer>
+<script layout:fragment="script" th:inline="javascript">
+    const name = [[${name}]]
+    if(name)
+       alert(name + "환영합니다.")
+</script>
+</body>
 </html>

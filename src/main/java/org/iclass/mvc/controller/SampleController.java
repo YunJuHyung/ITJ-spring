@@ -26,6 +26,7 @@ public class SampleController {
 	@Autowired
 	private CommunityMapper communityMapper;
 
+
 	@GetMapping("/hello")
 	public void read(Model model) {
 		model.addAttribute("message", "하이 스프링~~~!!!");
@@ -34,25 +35,21 @@ public class SampleController {
 	}
 
 	@GetMapping("/spring")
-	public void spring(
+	public void spring(Community community, Model model,
 			@RequestParam(required = false) String name,
 			@RequestParam(required = false) Integer age) {
 		log.info("파라미터 name: {},name", name);
 		log.info("파라미터 age: {},age", age);
+		log.info("Community dto : {} ", community); //Community 클래스의 모든 필드들이 파라미터로 전달될수 있다.
+		model.addAttribute("name", name);
+		model.addAttribute("age", age);
 		//required = false 로 하면 파라미터 값이 null 이 되어야하므로
-		//int,long 들은 Integer,Log
 	}
+	//복습 10월 4일
+	//DTO 클래스는 파라미터를 받고 다시 view 의 Model(view 로 전달하는 데이터 저장객체) 로 전달도 할 수 있습니다.
+	//int,long 등 기본형과 String 은 파라미터 받은것을 Model에 직접 저장해야 view로 넘어갑니다 예시) 44번째줄
 
-	@GetMapping("/list")
-	public String list(Model model, long idx,Community vo
-	) {
-		communityMapper.read(idx);
-		communityMapper.insert(vo);
-		communityMapper.update(vo);
-		communityMapper.delete(idx);
 
-		return "list";
-	}
 
 }
 
