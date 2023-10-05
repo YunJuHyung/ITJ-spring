@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -29,13 +30,36 @@ public class CommunityController {
 
     private final CommunityService service;
 
-    @GetMapping("/list")
+    @GetMapping("list")
     public void pagelist(PageRequestDTO pageRequestDTO ,Model model){
-        PageResponseDTO PageResponseDTO = service.listWithSearch(pageRequestDTO);
         log.info(">>>>>>pageRequestDTO : {}", pageRequestDTO.getPage());
+        PageResponseDTO PageResponseDTO = service.listWithSearch(pageRequestDTO);
         PageResponseDTO.getList().forEach(i-> {
             log.info(">>>>> 글 : {}",i);
         });
-        model.addAttribute("PageResponseDTO",PageResponseDTO);
+        model.addAttribute("paging",PageResponseDTO);
     }
+
+    @GetMapping("read")
+    public void read(PageRequestDTO pageRequestDTO,long idx,Model model){
+        Community community = service.read(idx);
+        model.addAttribute("dto",community);
+
+    }
+
+    @GetMapping("write")
+    public void write(){
+    }
+
+    @PostMapping("write")
+        public String writeAction(Community vo,Model model,long idx){
+        int insert = service.insert(vo);
+        model.addAttribute("insert",insert);
+        model.addAttribute("idx",idx);
+        return "redirect:/community/list";
+    }
+
+   /* @PostMapping("write"){
+        public void writeAction()
+    }*/
 }

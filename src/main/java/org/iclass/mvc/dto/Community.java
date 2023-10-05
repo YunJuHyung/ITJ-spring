@@ -25,7 +25,7 @@ public class Community {
 	private String title;
 	private String content;
 	private int readCount;
-	private Timestamp createdAt;
+	private Timestamp createdAT;
 	private String ip;
 	private String commentCount;
 

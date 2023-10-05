@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/html" xmlns:td="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout/basic.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Write Page</title>
+</head>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<body>
+<div layout:fragment="content">
+    <div class="row mt -3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Welcome! Community - Write
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" ><!--th:value="request.getRemoteAddr()"-->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text col-2">글번호</span>
+                            <input name="idx" class="form-control" value="[[${idx}]]" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text col-2">제목</span>
+                            <input name="title" class="form-control" >
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text col-2">작성자</span>
+                            <input name="writer" class="form-control" >
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text col-2">내용</span>
+                            <textarea name="content" class="form-control" row="15" style="resize: none;" ></textarea>
+                        </div>
+                       <!-- <div class="input-group mb-3">
+                            <span class="input-group-text col-2">작성날짜</span>
+                            <input name="createdAT" class="form-control" th:value="${#dates.format(dto.createdAT, 'yyyy-MM-dd')}" readonly>
+                        </div>-->
+                        <div class="my-4">
+                            <!--  link 예시 : page=10&type=tc&keyword=hi 를 전달 받아서 목록과 수정 선택했을때 클릭시 파라미터를 추가시킵니다. -->
+                            <div class="float-end">
+                                <a th:href="@{/community/list}" class="text-decoration-none">
+                                    <!-- 예시) href="/community/list?page=10&type=tc&keyword=hi" -->
+                                    <button type="button" class="btn btn-primary">목록</button>
+                                </a>
+                                <!-- 예시) href="/community/update?idx=999&page=10&type=tc&keyword=hi" -->
+                                <button type="submit" class="btn btn-primary">등록하기</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
