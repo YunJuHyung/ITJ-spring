@@ -64,7 +64,7 @@
 		INSERT INTO
 		community (idx,writer,title,content,ip)
 		VALUES
-		(community_idx_seq.nextval,#{writer},#{title},#{ip,jdbcType=VARCHAR})
+		(community_idx_seq.nextval,#{writer},#{title},#{content},#{ip,jdbcType=VARCHAR})
 		<!-- 매개변수가 null 을 허용하고 싶을 때 jdbcType=VARCHAR 로 타입을 알려줍니다. -->
 		<!-- 참고: insert 후에 community_idx_seq 시퀀스 값을 가져와서 idx 프로퍼티에 저장하는 태그 -->
 		<selectKey keyProperty="idx" resultType="long" order="AFTER">

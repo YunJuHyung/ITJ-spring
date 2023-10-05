@@ -16,11 +16,9 @@
                     Welcome! Community - Write
                 </div>
                 <div class="card-body">
-                    <form action="" method="post" ><!--th:value="request.getRemoteAddr()"-->
-                        <div class="input-group mb-3">
-                            <span class="input-group-text col-2">글번호</span>
-                            <input name="idx" class="form-control" value="[[${idx}]]" readonly>
-                        </div>
+                    <form action="write" method="post"> <!--th:value="request.getRemoteAddr()"-->
+                        <!--  ip null 처리하는 방법도 있음-->
+
                         <div class="input-group mb-3">
                             <span class="input-group-text col-2">제목</span>
                             <input name="title" class="form-control" >

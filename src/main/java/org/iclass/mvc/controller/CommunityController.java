@@ -52,10 +52,9 @@ public class CommunityController {
     }
 
     @PostMapping("write")
-        public String writeAction(Community vo,Model model,long idx){
+        public String writeAction(Community vo,Model model){
         int insert = service.insert(vo);
         model.addAttribute("insert",insert);
-        model.addAttribute("idx",idx);
         return "redirect:/community/list";
     }
 
