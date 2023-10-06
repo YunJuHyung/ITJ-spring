@@ -6,19 +6,18 @@
     <meta charset="UTF-8">
     <title>Write Page</title>
 </head>
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/write.css}">
 <body>
 <div layout:fragment="content">
     <div class="row mt -3">
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Welcome! Community - Write
+                    Welcome! Community - Write  번
                 </div>
                 <div class="card-body">
                     <form action="write" method="post"> <!--th:value="request.getRemoteAddr()"-->
                         <!--  ip null 처리하는 방법도 있음-->
-
                         <div class="input-group mb-3">
                             <span class="input-group-text col-2">제목</span>
                             <input name="title" class="form-control" >
